@@ -1,0 +1,29 @@
+# Raw EDA inputs are private; these rules apply at every directory depth.
+*.[bB][rR][dD]
+*.[sS][cC][hH]
+*.brd.*
+*.sch.*
+
+# Dataset downloads and release assets live outside Git history.
+datasets/
+dist/
+output/
+*.zip
+*.tar
+*.tar.gz
+
+# Credentials, local environments, caches, and operating-system files.
+.env
+.env.*
+!.env.example
+keys
+*.pem
+*.key
+.venv/
+.test_dependencies/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.DS_Store
+__MACOSX/
+._*

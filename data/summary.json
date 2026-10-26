@@ -1,0 +1,17 @@
+{
+  "version": "v0.1.0",
+  "graph_count": 1681,
+  "total_bytes": 187642615,
+  "position_records": 77236,
+  "library_records": 55762,
+  "dimension_records": 55762,
+  "net_records": 55830,
+  "smd_records": 168815,
+  "unique_top_level_keys": [
+    "board_boundary",
+    "ic_dimension",
+    "ic_library",
+    "ic_position",
+    "netlist"
+  ]
+}
