@@ -2,7 +2,9 @@
 
 Processed PCB placement graphs and code for preprocessing, rendering, model-based placement, and geometric evaluation.
 
-The dataset contains **1,681 graph JSON files** derived from EAGLE board designs. The public dataset contains the processed graphs; original `.brd` files are excluded. The dataset is distributed through [GitHub Releases](https://github.com/AAAAAiden/OmniLayout-Benchmark/releases) separately from the code.
+**Dataset downloads are temporarily withdrawn pending a source-by-source license and attribution review.** The code remains public under MIT. See the [license audit](docs/LICENSE_AUDIT.md) for the current status and review requirements.
+
+The dataset inventory contains **1,681 graph JSON files** derived from EAGLE board designs. The intended data release contains processed graphs; original `.brd` files are excluded. Any future dataset distribution will be separate from the code and limited to designs with documented redistribution permission and required notices.
 
 ## Install
 
@@ -24,25 +26,27 @@ For model-based placement, install the optional provider dependencies:
 python -m pip install -r requirements-llm.txt
 ```
 
-## Download the graphs
+## Dataset availability
+
+The `v0.1.0` dataset release has been converted to an unpublished draft. There is currently no public dataset download. The command below reports the review status and exits before making a network request:
 
 ```sh
 python scripts/download_dataset.py
 ```
 
-The downloader obtains the pinned dataset release and checks its integrity. By default, the graphs are extracted into `datasets/graphs/graph/`. To use an archive that you have already downloaded:
+If you already hold an archive and have the necessary rights to use it, the offline integrity-checking path remains available:
 
 ```sh
 python scripts/download_dataset.py --archive /path/to/omnilayout-graphs-v0.1.0.zip
 ```
 
-Use `--output` to choose a different extraction directory. The release archive includes the graph files, `manifest.json`, `summary.json`, and dataset licensing information. The code repository includes the inventory and summary under [`data/`](data/).
+Use `--output` to choose a different extraction directory. Local verification checks the archive and graph hashes; it does not establish redistribution permission. The code repository retains the inventory and summary under [`data/`](data/) so the review can be tracked.
 
-The dataset asset is `omnilayout-graphs-v0.1.0.zip` in release `v0.1.0`, a **9,570,204-byte download** (approximately 9.13 MiB). `SHA256SUMS.txt` provides its checksum for manual verification, and [`data/release.json`](data/release.json) pins the download URL, size, and SHA-256.
+The withheld archive is `omnilayout-graphs-v0.1.0.zip`, **9,570,204 bytes** (approximately 9.13 MiB). [`data/release.json`](data/release.json) records its hash, size, and withheld status. The download URL is disabled until the review is complete.
 
 ## Render and evaluate a graph
 
-The following example uses a small board included in the dataset:
+The following commands illustrate the graph schema using an existing local dataset file. They require your own lawfully obtained graph data while public downloads are withdrawn:
 
 ```sh
 python omnilayout.py render "datasets/graphs/graph/0.5mm 4-pin##1_graph.json" --output-dir output/rendered

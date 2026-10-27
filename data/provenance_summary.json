@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "graph_count": 1681,
+  "graphs_with_exact_local_board_candidate": 1681,
+  "graphs_with_exact_local_schematic_candidate": 1681,
+  "graphs_with_multiple_distinct_local_board_candidates": 27,
+  "graphs_with_lineage_metadata": 1643,
+  "graphs_with_board_or_schematic_notice_signals": 31,
+  "graphs_with_only_embedded_library_notice_signals": 617,
+  "graphs_with_external_evidence": 1173,
+  "unique_local_raw_source_hashes": 3355,
+  "local_raw_source_file_copies": 8393,
+  "unique_lineage_metadata_hashes": 1658,
+  "external_evidence_files": [
+    {
+      "path": "data/license_evidence_adafruit.json",
+      "sha256": "e9981f71e54d6fbe28650d7bbbef286e6998e672df82a855154bffdd08a5a67e",
+      "entry_count": 831,
+      "integration": "references_only_no_automatic_rights_clearance"
+    },
+    {
+      "path": "data/license_evidence_other_sources.json",
+      "sha256": "3c83b6091fd61504d548f5000a1ef2a9c5ac83ee5936e53e07257ab06432f3fc",
+      "entry_count": 345,
+      "integration": "references_only_no_automatic_rights_clearance"
+    }
+  ],
+  "archives_indexed": 7,
+  "rights_status_counts": {
+    "unverified_requires_upstream_review": 1681
+  },
+  "graphs_cleared_for_redistribution": 0,
+  "brand_hint_counts_not_license_assignments": {
+    "adafruit": 756,
+    "arduino": 12,
+    "seeed": 99,
+    "sparkfun": 311
+  },
+  "limitations": [
+    "Raw files were matched by exact filename, not by rerunning conversion and reproducing the published graph.",
+    "Embedded notice signals and brand hints are leads only; they do not establish licensing of a design or graph.",
+    "Library notices are classified separately from board/schematic notices and cannot clear the design.",
+    "External evidence is referenced for review; this script never grants release clearance automatically.",
+    "Archive members were indexed without extracting raw designs; their contents were not used for clearance.",
+    "Private absolute paths and original raw design contents are omitted."
+  ],
+  "graphs_with_verified_exact_upstream_source_evidence": 415,
+  "external_exact_source_claims_with_mismatching_local_hash": 0
+}

@@ -14,6 +14,19 @@ import zipfile
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def require_public_download(release: dict) -> None:
+    """Fail closed until the dataset has an explicit publication approval."""
+    if release.get("status") != "published" or release.get("public_download_enabled") is not True:
+        raise SystemExit(
+            "Dataset download is temporarily unavailable while source licenses "
+            "and attribution are reviewed. The project code remains available. "
+            "See docs/LICENSE_AUDIT.md."
+        )
+    url = release.get("url")
+    if not isinstance(url, str) or not url.startswith("https://github.com/AAAAAiden/OmniLayout-Benchmark/releases/download/"):
+        raise ValueError("Unexpected or missing dataset download URL")
+
+
 def digest_file(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as handle:
@@ -82,8 +95,7 @@ def main() -> None:
     if args.archive:
         install_archive(args.archive, args.output, release, manifest, summary)
     else:
-        if not release["url"].startswith("https://github.com/AAAAAiden/OmniLayout-Benchmark/releases/download/"):
-            raise ValueError("Unexpected dataset download host")
+        require_public_download(release)
         with tempfile.TemporaryDirectory(prefix="omnilayout-download-") as temporary:
             archive = Path(temporary) / release["archive"]
             request = urllib.request.Request(release["url"], headers={"User-Agent": "OmniLayout-Benchmark"})

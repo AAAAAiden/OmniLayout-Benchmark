@@ -1,5 +1,9 @@
 # Processed graph dataset
 
+**Availability:** public dataset downloads are withdrawn pending source-license
+and attribution review. This document describes the retained inventory and
+schema, not a currently cleared public dataset. See [the license audit](LICENSE_AUDIT.md).
+
 This release contains the processed PCB placement graphs derived from the original EAGLE board files. The original `.brd` files are excluded.
 
 ## Contents

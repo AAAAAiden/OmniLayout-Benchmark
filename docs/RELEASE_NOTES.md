@@ -1,5 +1,18 @@
 # Release notes
 
+## 2026-10-26: dataset download withdrawn for license review
+
+The `v0.1.0` dataset release has been converted to an unpublished draft. The
+graph ZIP and checksum are retained for review, and the public download URL is
+disabled. Code remains public under MIT. The downloader now blocks network
+downloads unless release metadata explicitly permits publication. Existing
+local archives can still be checked offline; checksums do not establish rights.
+
+The initial release should not be treated as cleared for redistribution. Track
+source matching, license evidence, and unresolved attribution in the
+[license audit](LICENSE_AUDIT.md). The earlier release description below is
+retained as historical context.
+
 ## Initial public release scope
 
 This repository presents the project's reusable code with the processed board-graph dataset distributed as a separate download.

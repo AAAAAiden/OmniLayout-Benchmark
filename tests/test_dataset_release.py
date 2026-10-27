@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest import mock
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -78,6 +79,23 @@ class DatasetReleaseTests(unittest.TestCase):
         self.install()
         with self.assertRaises(FileExistsError):
             self.install()
+
+    def test_unreviewed_or_missing_status_blocks_public_download(self):
+        for release in ({}, self.release, {"status": "published", "public_download_enabled": False}):
+            with self.subTest(release=release):
+                with self.assertRaisesRegex(SystemExit, "source licenses"):
+                    downloader.require_public_download(release)
+
+    def test_withheld_download_makes_no_network_request(self):
+        data = self.directory / "data"
+        data.mkdir()
+        for filename, value in (("release.json", self.release), ("manifest.json", self.manifest), ("summary.json", self.summary)):
+            (data / filename).write_text(json.dumps(value), encoding="utf-8")
+        with mock.patch.object(downloader, "ROOT", self.directory), mock.patch("sys.argv", ["download_dataset.py"]), mock.patch.object(downloader.urllib.request, "urlopen") as network:
+            with self.assertRaisesRegex(SystemExit, "temporarily unavailable"):
+                downloader.main()
+            network.assert_not_called()
+        self.assertFalse((self.directory / "datasets").exists())
 
     def test_release_guard_blocks_raw_boards_case_insensitively(self):
         for name in ("private.BRD", "nested/private.brd.backup", "dataset.zip", "datasets/graph.json", "keys"):

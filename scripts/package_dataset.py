@@ -92,8 +92,10 @@ def package_dataset(source: Path, output: Path, metadata: Path, version: str = V
     archive_digest = sha256(archive.read_bytes())
     release = {
         "version": version, "archive": archive.name, "sha256": archive_digest,
+        "status": "withheld_pending_license_review", "public_download_enabled": False,
+        "reason": "Source-by-source licensing and attribution require review before publication.",
         "bytes": archive.stat().st_size,
-        "url": f"https://github.com/AAAAAiden/OmniLayout-Benchmark/releases/download/{version}/{archive.name}",
+        "url": None,
         "graph_count": len(files),
     }
     for name, content in [("manifest.json", manifest_bytes), ("summary.json", summary_bytes), ("release.json", encode_json(release))]:
